@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5023"/>
+        <deployment defaultVersion="1070" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -13,6 +14,15 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="Voe-Tx-rLC" customClass="MHAppDelegate">
             <connections>
+                <outlet property="crc32Checked" destination="yb0-fq-tQ0" id="spY-14-scd"/>
+                <outlet property="currentFileProgress" destination="oqo-hO-8MC" id="Yji-5t-BFw"/>
+                <outlet property="dateChecked" destination="dcF-YO-jpz" id="IHS-z8-adG"/>
+                <outlet property="logTextView" destination="fBz-q2-Y3X" id="Jsf-dN-N5a"/>
+                <outlet property="md4Checked" destination="aNP-gL-Ywv" id="mBW-9I-b6h"/>
+                <outlet property="sha1Checked" destination="Q14-rL-orh" id="L2v-L9-jip"/>
+                <outlet property="sha256Checked" destination="z1h-jc-Kqy" id="dLW-dT-enV"/>
+                <outlet property="topView" destination="EiT-Mj-1SZ" id="Vau-gB-C3v"/>
+                <outlet property="totalProgress" destination="XtW-vi-aMf" id="lJz-AH-cBw"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -667,14 +677,247 @@
             </items>
         </menu>
         <window title="MacHash" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <rect key="contentRect" x="335" y="390" width="606" height="370"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="606" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYX-Ko-6HI">
+                        <rect key="frame" x="20" y="119" width="566" height="231"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <clipView key="contentView" id="RRD-fP-DZF">
+                            <rect key="frame" x="1" y="1" width="549" height="229"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" importsGraphics="NO" findStyle="panel" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="fBz-q2-Y3X">
+                                    <rect key="frame" x="0.0" y="0.0" width="549" height="229"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="549" height="229"/>
+                                    <size key="maxSize" width="560" height="10000000"/>
+                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="549" height="229"/>
+                                    <size key="maxSize" width="560" height="10000000"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="kad-GE-Rnq">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yI0-pJ-6Ba">
+                            <rect key="frame" x="550" y="1" width="15" height="229"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jAF-QH-6ZC">
+                        <rect key="frame" x="14" y="80" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="U7i-bE-NB1"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Browser" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KUc-Hf-3eJ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="browserFiles:" target="Voe-Tx-rLC" id="6dZ-RN-WUi"/>
+                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.isDoingHash" id="9D4-Xa-LGh">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FRp-ft-lkd">
+                        <rect key="frame" x="96" y="80" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cPu-AL-oGq">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="clearLog:" target="Voe-Tx-rLC" id="Kn7-lQ-VaW"/>
+                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.isDoingHash" id="gEH-Dn-kFp">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mqZ-cO-f35">
+                        <rect key="frame" x="178" y="80" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="kCU-7A-1CJ"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UDJ-Fs-DFd">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="saveLog:" target="Voe-Tx-rLC" id="nD4-56-h2n"/>
+                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.isDoingHash" id="BdZ-DU-jf8">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="dcF-YO-jpz">
+                        <rect key="frame" x="512" y="85" width="61" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Date" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="DmM-HE-xB4">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.isDoingHash" id="J3a-nr-QMn">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="aNP-gL-Ywv">
+                        <rect key="frame" x="512" y="67" width="61" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="MD5" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="En6-qO-NwM">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.isDoingHash" id="Wsy-IZ-Jpd">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Q14-rL-orh">
+                        <rect key="frame" x="512" y="47" width="61" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="SHA1" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fqC-5I-XV1">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.isDoingHash" id="pGQ-Xl-WT9">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <progressIndicator maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="oqo-hO-8MC">
+                        <rect key="frame" x="102" y="49" width="403" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </progressIndicator>
+                    <progressIndicator maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="XtW-vi-aMf">
+                        <rect key="frame" x="102" y="23" width="403" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </progressIndicator>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d5q-lM-pl1">
+                        <rect key="frame" x="20" y="50" width="73" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Progress:" id="otw-4p-13z">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-Ri-4kW">
+                        <rect key="frame" x="20" y="25" width="73" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total:" id="885-tZ-gap">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="z1h-jc-Kqy">
+                        <rect key="frame" x="511" y="24" width="76" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="LQm-Om-DSu"/>
+                        </constraints>
+                        <buttonCell key="cell" type="check" title="SHA256" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1vg-Bz-ccw">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.isDoingHash" id="kEB-FQ-Rgm">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="yb0-fq-tQ0">
+                        <rect key="frame" x="512" y="9" width="76" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="CRC32" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OyO-lq-rfi">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.isDoingHash" id="2lt-UQ-4vW">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yb0-fq-tQ0" firstAttribute="trailing" secondItem="uYX-Ko-6HI" secondAttribute="trailing" id="1wZ-Xm-4A0"/>
+                    <constraint firstItem="oqo-hO-8MC" firstAttribute="leading" secondItem="FRp-ft-lkd" secondAttribute="leading" id="3N7-5h-DHm"/>
+                    <constraint firstItem="jAF-QH-6ZC" firstAttribute="baseline" secondItem="mqZ-cO-f35" secondAttribute="baseline" id="3oJ-mw-daD"/>
+                    <constraint firstItem="dcF-YO-jpz" firstAttribute="leading" secondItem="Q14-rL-orh" secondAttribute="leading" id="4BP-80-0CD"/>
+                    <constraint firstItem="jAF-QH-6ZC" firstAttribute="trailing" secondItem="nuf-Ri-4kW" secondAttribute="trailing" id="6Tr-s7-p3D"/>
+                    <constraint firstItem="jAF-QH-6ZC" firstAttribute="top" secondItem="uYX-Ko-6HI" secondAttribute="bottom" constant="11" id="BBe-V6-90x"/>
+                    <constraint firstItem="uYX-Ko-6HI" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="GQJ-NT-rH4"/>
+                    <constraint firstItem="nuf-Ri-4kW" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="23" id="GpR-Bc-Bab"/>
+                    <constraint firstItem="oqo-hO-8MC" firstAttribute="leading" secondItem="XtW-vi-aMf" secondAttribute="leading" id="Jeh-IF-i7R"/>
+                    <constraint firstItem="mqZ-cO-f35" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="184" id="KXu-CW-oxZ"/>
+                    <constraint firstAttribute="trailing" secondItem="z1h-jc-Kqy" secondAttribute="trailing" constant="21" id="Oxo-Oc-BVg"/>
+                    <constraint firstAttribute="trailing" secondItem="dcF-YO-jpz" secondAttribute="trailing" constant="35" id="PW4-o3-tG8"/>
+                    <constraint firstItem="FRp-ft-lkd" firstAttribute="leading" secondItem="jAF-QH-6ZC" secondAttribute="trailing" constant="12" symbolic="YES" id="SnV-ft-djD"/>
+                    <constraint firstItem="z1h-jc-Kqy" firstAttribute="leading" secondItem="XtW-vi-aMf" secondAttribute="trailing" constant="8" symbolic="YES" id="Txa-N5-XyX"/>
+                    <constraint firstItem="jAF-QH-6ZC" firstAttribute="trailing" secondItem="d5q-lM-pl1" secondAttribute="trailing" id="XzV-c5-sLS"/>
+                    <constraint firstItem="oqo-hO-8MC" firstAttribute="trailing" secondItem="XtW-vi-aMf" secondAttribute="trailing" id="Yq7-pG-4tE"/>
+                    <constraint firstItem="dcF-YO-jpz" firstAttribute="trailing" secondItem="Q14-rL-orh" secondAttribute="trailing" id="Z6d-az-hWG"/>
+                    <constraint firstItem="nuf-Ri-4kW" firstAttribute="leading" secondItem="d5q-lM-pl1" secondAttribute="leading" id="b1m-xF-g1p"/>
+                    <constraint firstItem="oqo-hO-8MC" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="bCt-DH-atb"/>
+                    <constraint firstItem="yb0-fq-tQ0" firstAttribute="top" secondItem="z1h-jc-Kqy" secondAttribute="bottom" constant="1" id="bPy-in-cS1"/>
+                    <constraint firstItem="jAF-QH-6ZC" firstAttribute="leading" secondItem="uYX-Ko-6HI" secondAttribute="leading" id="dy7-qY-aFo"/>
+                    <constraint firstItem="dcF-YO-jpz" firstAttribute="leading" secondItem="aNP-gL-Ywv" secondAttribute="leading" id="ecp-fb-kCi"/>
+                    <constraint firstItem="jAF-QH-6ZC" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="fYd-3d-2xP"/>
+                    <constraint firstItem="jAF-QH-6ZC" firstAttribute="baseline" secondItem="FRp-ft-lkd" secondAttribute="baseline" id="fhq-tX-qbP"/>
+                    <constraint firstItem="oqo-hO-8MC" firstAttribute="top" secondItem="mqZ-cO-f35" secondAttribute="bottom" constant="19" id="g3I-97-3YT"/>
+                    <constraint firstItem="z1h-jc-Kqy" firstAttribute="top" secondItem="Q14-rL-orh" secondAttribute="bottom" constant="3" id="g77-CH-UPe"/>
+                    <constraint firstItem="dcF-YO-jpz" firstAttribute="leading" secondItem="yb0-fq-tQ0" secondAttribute="leading" id="iSt-CR-7sY"/>
+                    <constraint firstItem="oqo-hO-8MC" firstAttribute="centerX" secondItem="uYX-Ko-6HI" secondAttribute="centerX" id="ikJ-xe-OIR"/>
+                    <constraint firstItem="d5q-lM-pl1" firstAttribute="top" secondItem="jAF-QH-6ZC" secondAttribute="bottom" constant="20" id="j5l-kg-5RP"/>
+                    <constraint firstItem="nuf-Ri-4kW" firstAttribute="baseline" secondItem="z1h-jc-Kqy" secondAttribute="baseline" id="jWY-bg-mwX"/>
+                    <constraint firstItem="dcF-YO-jpz" firstAttribute="trailing" secondItem="aNP-gL-Ywv" secondAttribute="trailing" id="mpM-9q-08d"/>
+                    <constraint firstItem="jAF-QH-6ZC" firstAttribute="bottom" secondItem="dcF-YO-jpz" secondAttribute="bottom" id="nCL-Qe-VK8"/>
+                    <constraint firstItem="Q14-rL-orh" firstAttribute="leading" secondItem="oqo-hO-8MC" secondAttribute="trailing" constant="9" id="p8j-sg-jIF"/>
+                    <constraint firstAttribute="bottom" secondItem="jAF-QH-6ZC" secondAttribute="bottom" constant="87" id="vhu-al-Nvi"/>
+                    <constraint firstItem="XtW-vi-aMf" firstAttribute="top" secondItem="oqo-hO-8MC" secondAttribute="bottom" constant="8" symbolic="YES" id="ya5-Um-2pA"/>
+                    <constraint firstItem="mqZ-cO-f35" firstAttribute="leading" secondItem="FRp-ft-lkd" secondAttribute="trailing" constant="12" symbolic="YES" id="yne-5c-lWc"/>
+                    <constraint firstItem="aNP-gL-Ywv" firstAttribute="top" secondItem="dcF-YO-jpz" secondAttribute="bottom" constant="4" id="yo2-TH-VwX"/>
+                    <constraint firstItem="nuf-Ri-4kW" firstAttribute="top" secondItem="d5q-lM-pl1" secondAttribute="bottom" constant="8" symbolic="YES" id="zu2-16-dq6"/>
+                </constraints>
             </view>
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GE1-eX-f94"/>
+            </connections>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="HNq-L2-aXS"/>
     </objects>
 </document>

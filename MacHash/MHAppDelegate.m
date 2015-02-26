@@ -32,6 +32,29 @@ static const size_t BUFFER_SIZE = 4096;
     return YES;
 }
 
+- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename
+{
+    if(self.isDoingHash){
+        [Misc openNewInstanceWithFile:filename];
+    }else{
+        [self doHash:[NSArray arrayWithObject:[NSURL fileURLWithPath:filename]]];
+    }
+    return YES;
+}
+
+- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
+{
+    if(self.isDoingHash){
+        [Misc openNewInstanceWithFiles:filenames];
+    }else{
+        NSMutableArray *urls = [NSMutableArray arrayWithCapacity:0];
+        for(NSString *path in filenames){
+            [urls addObject:[NSURL fileURLWithPath:path]];
+        }
+        [self doHash:urls];
+    }
+}
+
 /*
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {
@@ -45,7 +68,7 @@ static const size_t BUFFER_SIZE = 4096;
     BOOL res = NO;
     if(self.isDoingHash)
     {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"App is busying"
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Application is busying"
                                          defaultButton:@"YES"
                                        alternateButton:@"NO"
                                            otherButton:nil
@@ -71,14 +94,10 @@ static const size_t BUFFER_SIZE = 4096;
     [panel beginSheetModalForWindow:_window completionHandler:^(NSInteger result){
 
         if (result == NSFileHandlingPanelOKButton) {
-            for (NSURL *url in [panel URLs]) {
-                NSLog(@"url:%@",[url path]);
-            }
             [self doHash:[panel URLs]];
         }
     }];
     
-
 }
 
 - (IBAction)clearLog:(id)sender {
@@ -114,9 +133,11 @@ static const size_t BUFFER_SIZE = 4096;
 
 -(void)updateProgress:(double)current total:(double)total
 {
-    [self.totalProgress setDoubleValue:total];
     [self.currentFileProgress setDoubleValue:current];
+    [self.totalProgress setDoubleValue:total];
 }
+
+
 
 - (void) doHash:(NSArray*)fileUrls
 {
@@ -193,7 +214,7 @@ static const size_t BUFFER_SIZE = 4096;
                  if(time(NULL)-*lastTimep>=1){
                      *lastTimep=time(lastTimep);
                      dispatch_async(dispatch_get_main_queue(), ^{
-                         [self updateProgress:*fileCurp total:i];
+                         [self updateProgress:*fileCurp total:i+(*fileCurp*1.0/fileTotal)/[fileUrls count]];
                      });
                  }
                 }
@@ -225,6 +246,7 @@ static const size_t BUFFER_SIZE = 4096;
                  [newS appendString:mdString];
                  [newS appendString:@"\n"];
                  [self.logTextView setString:newS];
+                [self.logTextView scrollRangeToVisible:NSMakeRange([newS length],0)];
              });
 
             ///刚刚算完休息一下

@@ -29,4 +29,41 @@
     }
 }
 
++ (void)runCommand:(char* const*)args
+{
+    pid_t pid = fork();
+    if(pid <0){
+        NSLog(@"fork(): failed!");
+    }else if(pid == 0){
+        ///child
+        execv(args[0],args);
+    }else {
+        //parent
+        int st=0;
+        waitpid(pid,&st,0);
+    }
+}
+
++(void)openNewInstanceWithFiles:(NSArray*)filenames
+{
+    const char **args = malloc(sizeof(char*)*([filenames count]+7));
+    int i=0;
+    args[i++]="/usr/bin/open";
+    args[i++]="-n";
+    args[i++]=[[[NSBundle mainBundle] bundlePath] UTF8String];
+    
+    int j=0;
+    for(;j<[filenames count];j++){
+        args[i+j]=[[filenames objectAtIndex:j] UTF8String];
+    }
+    args[i+j]=NULL;
+    
+    free(args);
+}
+
++(void)openNewInstanceWithFile:(NSString*)filename
+{
+    [Misc openNewInstanceWithFiles:[NSArray arrayWithObject:filename]];
+}
+
 @end

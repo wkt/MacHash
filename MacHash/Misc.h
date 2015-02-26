@@ -12,5 +12,6 @@
 
 +(NSString*) getHashString:(unsigned char *)data datalen:(size_t) datalen;
 +(void) setStringToURL:(NSURL*)url data:(NSString*)s;
-
++(void)openNewInstanceWithFiles:(NSArray*)filenames;
++(void)openNewInstanceWithFile:(NSString*)filename;
 @end

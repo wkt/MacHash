@@ -32,5 +32,43 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>*</string>
+			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>application/zip</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>file</string>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>XML</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+		</dict>
+        <dict>
+			<key>LSItemContentTypes</key>
+             <array>
+             <string>kUTTypeCompositeContent</string>
+             <string>kUTTypeContent</string>
+             <string>kUTTypeArchive</string>
+             <string>public.archive </string>
+             </array>
+			<key>CFBundleTypeName</key>
+			<string>file</string>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>XML</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+		</dict>
+	</array>
 </dict>
 </plist>

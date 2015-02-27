@@ -251,7 +251,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q14-rL-orh">
-                        <rect key="frame" x="577" y="48" width="76" height="18"/>
+                        <rect key="frame" x="577" y="52" width="76" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="SHA1" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fqC-5I-XV1">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -292,7 +292,7 @@
                         </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z1h-jc-Kqy">
-                        <rect key="frame" x="577" y="24" width="76" height="18"/>
+                        <rect key="frame" x="577" y="32" width="76" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="SHA256" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="1vg-Bz-ccw">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -307,7 +307,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yb0-fq-tQ0">
-                        <rect key="frame" x="577" y="4" width="76" height="18"/>
+                        <rect key="frame" x="577" y="12" width="76" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="CRC32" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OyO-lq-rfi">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

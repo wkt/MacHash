@@ -70,7 +70,6 @@
         return;
     }
     
-    NSLog(@"files:%@",files);
     _hashFiles(files);
     
     [pboard clearContents];

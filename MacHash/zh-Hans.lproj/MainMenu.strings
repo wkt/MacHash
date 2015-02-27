@@ -177,7 +177,7 @@
 "ogc-rX-tC1.title" = "Loosen";
 
 /* Class = "NSTextFieldCell"; title = "File progress:"; ObjectID = "otw-4p-13z"; */
-"otw-4p-13z.title" = "文件进度:";
+"otw-4p-13z.title" = "文件:";
 
 /* Class = "NSMenu"; title = "Kern"; ObjectID = "tlD-Oa-oAM"; */
 "tlD-Oa-oAM.title" = "Kern";

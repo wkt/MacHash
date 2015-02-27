@@ -208,7 +208,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         if(delay){
-            usleep(2000);
+            usleep(1000);
         }
         
         NSData *data = Nil;

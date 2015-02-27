@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface MHAppDelegate : NSObject <NSApplicationDelegate,NSWindowDelegate,NSDraggingDestination>
+@interface MHAppDelegate : NSObject <NSApplicationDelegate,NSWindowDelegate,NSDraggingDestination>{
+    NSString *_orginalTitle;
+}
 
 @property (assign) IBOutlet NSWindow *window;
 @property (unsafe_unretained) IBOutlet NSTextView *logTextView;

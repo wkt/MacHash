@@ -17,6 +17,7 @@
 
 @implementation MHAppDelegate
 
+
 @synthesize isDoingHash;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -32,7 +33,7 @@
             [self doHashWithFiles:files shouldDelay:YES];
         }
     }];
-
+    _orginalTitle = [self.window title].copy;
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
@@ -72,11 +73,11 @@
     BOOL res = NO;
     if(self.isDoingHash)
     {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Application is busying"
-                                         defaultButton:@"YES"
-                                       alternateButton:@"NO"
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Application is busying",@"")
+                                         defaultButton:NSLocalizedString(@"YES",@"")
+                                       alternateButton:NSLocalizedString(@"NO",Nil)
                                            otherButton:nil
-                             informativeTextWithFormat:@"Quit now?"];
+                             informativeTextWithFormat:NSLocalizedString(@"Quit now?",Nil)];
                 if (NSAlertDefaultReturn == [alert runModal])
         {
             res = YES;
@@ -240,19 +241,28 @@
             mdString = [NSMutableString stringWithCapacity:0];
 
             [mdString appendFormat:@"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />"
-             "</head><body><span style=\"font-size:120%%\">File</span> : %@<br />",[url path]];
+             "</head><body><span style=\"font-size:120%%\">%@</span> : %@<br />",NSLocalizedString(@"File",Nil),[url path]];
              
             stat([[url path] UTF8String],&st);
             if(S_ISDIR(st.st_mode)){
-                [mdString appendString:@"<span style=\"font-size:120%%\">Folder</span> : YES<br />"];
+                [mdString appendFormat:@"<span style=\"font-size:120%%\">%@</span> : %@<br />"
+                 ,NSLocalizedString(@"Folder",Nil),NSLocalizedString(@"YES",Nil)];
             }else{
-                [mdString appendFormat:@"<span style=\"font-size:120%%\">Size</span> : %lld (%@)<br />",st.st_size,[Misc byteToString:st.st_size]];
+                [mdString appendFormat:@"<span style=\"font-size:120%%\">%@</span> : %lld %@",
+                 NSLocalizedString(@"Size",Nil),
+                 st.st_size,
+                 NSLocalizedString(@"Byte",Nil)
+                 ];
+                if(st.st_size>=1024)[mdString appendFormat:@" (%@)",[Misc byteToString:st.st_size]];
+                [mdString appendString:@"<br/>"];
             }
             fileTotal = st.st_size;
 
             if(needDate){
                 date = [NSDate dateWithTimeIntervalSince1970:st.st_mtimespec.tv_sec];
-                [mdString appendFormat:@"<span style=\"font-size:120%%\">Modified</span> : %@ <br/>",[date descriptionWithLocale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]];
+                [mdString appendFormat:@"<span style=\"font-size:120%%\">%@</span> : %@ <br/>",
+                 NSLocalizedString(@"Modified",Nil),
+                 [date descriptionWithLocale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]];
             }
             if(S_ISDIR(st.st_mode))[mdString appendString:@"<br/></body></html>"];
 
@@ -282,6 +292,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self initCurrentProgress:fileTotal];
                 [self updateProgress:0 total:i];
+                [self.window setTitle:[NSMutableString stringWithFormat:@"%@ --- %@",_orginalTitle,[url lastPathComponent]] ];
             });
             [self dealWithURL:url readFunc:^(const void *data,size_t data_len){
                 if(md5p)CC_MD5_Update(md5p,data,data_len);

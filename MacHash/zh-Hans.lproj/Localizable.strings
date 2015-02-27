@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  MacHash
+
+  Created by WeiKeting on 15-2-27.
+  Copyright (c) 2015年 weiketing.com. All rights reserved.
+*/
+"Application is busying" = "程序繁忙中";
+"YES" = "是";
+"NO" = "否";
+"Quit now?" = "确定要退出么?";
+"File" = "文件";
+"Folder" = "文件夹";
+"Size" = "大小";
+"Byte" = "字节";
+"Modified" = "修改时间";

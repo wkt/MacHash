@@ -24,7 +24,11 @@
 {
     FILE *fp = fopen([[url path] UTF8String], "wb");
     if(fp){
-        fwrite([s UTF8String],1,[s length], fp);
+        const char *ss =[s UTF8String];
+        size_t n=0;
+        while(n<[s length]){
+            n+=fwrite(ss+n,1,[s length]-n, fp);
+        }
         fclose(fp);
     }
 }
@@ -50,6 +54,7 @@
     int i=0;
     args[i++]="/usr/bin/open";
     args[i++]="-n";
+    args[i++]="-a";
     args[i++]=[[[NSBundle mainBundle] bundlePath] UTF8String];
     
     int j=0;
@@ -57,7 +62,7 @@
         args[i+j]=[[filenames objectAtIndex:j] UTF8String];
     }
     args[i+j]=NULL;
-    
+    [Misc runCommand:args];
     free(args);
 }
 

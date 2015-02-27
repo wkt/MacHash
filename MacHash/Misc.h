@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define BUFFER_SIZE  4096
+
 @interface Misc : NSObject
 
 +(NSString*) getHashString:(unsigned char *)data datalen:(size_t) datalen;

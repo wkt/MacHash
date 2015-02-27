@@ -14,8 +14,6 @@
 
 #include <CommonCrypto/CommonDigest.h>
 
-static const size_t BUFFER_SIZE = 4096;
-
 @implementation MHAppDelegate
 
 @synthesize isDoingHash;
@@ -25,6 +23,7 @@ static const size_t BUFFER_SIZE = 4096;
     self.isDoingHash = NO;
     [self initTotalProgress:1];
     [self initCurrentProgress:1];
+    [self.window registerForDraggedTypes: [NSArray arrayWithObject:NSFilenamesPboardType]];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
@@ -83,6 +82,35 @@ static const size_t BUFFER_SIZE = 4096;
     //    NSLog(@"%s:%d",__func__,res);
     return res;
 }
+
+
+#pragma mark - Destination Operations
+
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
+{
+    if(self.isDoingHash)return NSDragOperationNone;
+    if ( [[ [sender draggingPasteboard]  types] containsObject:NSFilenamesPboardType] ) {
+        return NSDragOperationCopy;
+    }
+    return NSDragOperationNone;
+}
+
+- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
+{
+    NSPasteboard *pboard = [sender draggingPasteboard];
+    
+    if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
+        NSArray *filenames = [pboard propertyListForType:NSFilenamesPboardType];
+        NSMutableArray *urls = [NSMutableArray arrayWithCapacity:0];
+        for(NSString *path in filenames){
+            [urls addObject:[NSURL fileURLWithPath:path]];
+        }
+        [self doHash:urls];
+    }
+    return YES;
+}
+
+#pragma mark - Destination Operations end
 
 - (IBAction)browserFiles:(id)sender {
     
@@ -183,20 +211,42 @@ static const size_t BUFFER_SIZE = 4096;
         size_t fileCur = 0;
         size_t *fileCurp = &fileCur;
         for (NSURL *url in fileUrls) {
-            fileCur=0;
-            lastTime =0;
-            date = Nil;
 
+            date = Nil;
             mdString = [NSMutableString stringWithCapacity:0];
             [mdString appendFormat:@"File: %@\n",[url path]];
              
             stat([[url path] UTF8String],&st);
-            [mdString appendFormat:@"Size: %lld\n",st.st_size];
-            fileTotal = st.st_size;
+            if(S_ISDIR(st.st_mode)){
+                [mdString appendString:@"Folder: YES\n"];
+            }else{
+                [mdString appendFormat:@"Size: %lld\n",st.st_size];
+                fileTotal = st.st_size;
+            }
+
             if(needDate){
-                 date = [NSDate dateWithTimeIntervalSince1970:st.st_mtimespec.tv_sec];
+                date = [NSDate dateWithTimeIntervalSince1970:st.st_mtimespec.tv_sec];
                 [mdString appendFormat:@"Modify: %@\n",date];
             }
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSMutableString *newS = [NSMutableString stringWithString:[self.logTextView string]];
+                [newS appendString:mdString];
+                [self.logTextView setString:newS];
+                [self.logTextView scrollRangeToVisible:NSMakeRange([newS length],0)];
+            });
+            if(S_ISDIR(st.st_mode)){
+                 [mdString appendString:@"\n"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self updateProgress:*fileCurp total:i+1];
+                });
+                continue;
+            }
+            
+            fileCur=0;
+            lastTime =0;
+            mdString = [NSMutableString stringWithCapacity:0];
+
             if(md5p)CC_MD5_Init(md5p);
             if(sha1p)CC_SHA1_Init(sha1p);
             if(sha256p)CC_SHA256_Init(sha256p);
@@ -205,20 +255,19 @@ static const size_t BUFFER_SIZE = 4096;
                 [self initCurrentProgress:fileTotal];
                 [self updateProgress:0 total:i];
             });
-             [self dealWithURL:url readFunc:^(const void *data,size_t data_len){
-                 if(md5p)CC_MD5_Update(md5p,data,data_len);
-                 if(sha1p)CC_SHA1_Update(sha1p, data, data_len);
-                 if(sha256p)CC_SHA256_Update(sha256p,data,data_len);
-                 if(crc32)[crc32 update:data length:data_len];
-                 *fileCurp += data_len;
-                 if(time(NULL)-*lastTimep>=1){
-                     *lastTimep=time(lastTimep);
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         [self updateProgress:*fileCurp total:i+(*fileCurp*1.0/fileTotal)/[fileUrls count]];
-                     });
-                 }
+            [self dealWithURL:url readFunc:^(const void *data,size_t data_len){
+                if(md5p)CC_MD5_Update(md5p,data,data_len);
+                if(sha1p)CC_SHA1_Update(sha1p, data, data_len);
+                if(sha256p)CC_SHA256_Update(sha256p,data,data_len);
+                if(crc32)[crc32 update:data length:data_len];
+                *fileCurp += data_len;
+                if(time(NULL)-*lastTimep>=1){
+                    *lastTimep=time(lastTimep);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self updateProgress:*fileCurp total:i+(*fileCurp*1.0/fileTotal)/[fileUrls count]];
+                    });
                 }
-              ];
+            }];
             i++;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self updateProgress:*fileCurp total:i];
@@ -252,10 +301,6 @@ static const size_t BUFFER_SIZE = 4096;
             ///刚刚算完休息一下
             usleep(500);
          }
-         
-         dispatch_async(dispatch_get_main_queue(), ^{
-             [[self.window windowController] setEnabled:YES];
-         });
          self.isDoingHash = NO;
      });
 }

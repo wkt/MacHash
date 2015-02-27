@@ -20,6 +20,7 @@
 		1B1C0FA61A9E169E004B475D /* MHCrc32.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0FA51A9E169E004B475D /* MHCrc32.m */; };
 		1B1C0FA91A9F576B004B475D /* Misc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0FA81A9F576B004B475D /* Misc.m */; };
 		1B1C0FAF1AA0880E004B475D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FAD1AA0880E004B475D /* MainMenu.xib */; };
+		1B1C0FB21AA08C82004B475D /* MHFinderServicesProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0FB11AA08C82004B475D /* MHFinderServicesProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		1B1C0FA71A9F576B004B475D /* Misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Misc.h; sourceTree = "<group>"; };
 		1B1C0FA81A9F576B004B475D /* Misc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Misc.m; sourceTree = "<group>"; };
 		1B1C0FAE1AA0880E004B475D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1B1C0FB01AA08C82004B475D /* MHFinderServicesProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHFinderServicesProvider.h; sourceTree = "<group>"; };
+		1B1C0FB11AA08C82004B475D /* MHFinderServicesProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHFinderServicesProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 				1B1C0FA51A9E169E004B475D /* MHCrc32.m */,
 				1B1C0F821A9DF83D004B475D /* MHAppDelegate.h */,
 				1B1C0F831A9DF83D004B475D /* MHAppDelegate.m */,
+				1B1C0FB01AA08C82004B475D /* MHFinderServicesProvider.h */,
+				1B1C0FB11AA08C82004B475D /* MHFinderServicesProvider.m */,
 				1B1C0FAD1AA0880E004B475D /* MainMenu.xib */,
 				1B1C0F881A9DF83D004B475D /* Images.xcassets */,
 				1B1C0F771A9DF83D004B475D /* Supporting Files */,
@@ -265,6 +270,7 @@
 			files = (
 				1B1C0F7D1A9DF83D004B475D /* main.m in Sources */,
 				1B1C0FA91A9F576B004B475D /* Misc.m in Sources */,
+				1B1C0FB21AA08C82004B475D /* MHFinderServicesProvider.m in Sources */,
 				1B1C0F841A9DF83D004B475D /* MHAppDelegate.m in Sources */,
 				1B1C0FA61A9E169E004B475D /* MHCrc32.m in Sources */,
 			);

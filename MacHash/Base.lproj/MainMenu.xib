@@ -295,7 +295,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="671" height="521"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView toolTip="Drag file(s) to this window" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYX-Ko-6HI">
+                    <scrollView toolTip="Drop file(s) to this window" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYX-Ko-6HI">
                         <rect key="frame" x="20" y="119" width="631" height="382"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" id="RRD-fP-DZF">

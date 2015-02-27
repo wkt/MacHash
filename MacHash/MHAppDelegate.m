@@ -11,6 +11,7 @@
 #import "MHCrc32.h"
 #import "Misc.h"
 #include <sys/stat.h>
+#import "MHFinderServicesProvider.h"
 
 #include <CommonCrypto/CommonDigest.h>
 
@@ -24,6 +25,13 @@
     [self initTotalProgress:1];
     [self initCurrentProgress:1];
     [self.window registerForDraggedTypes: [NSArray arrayWithObject:NSFilenamesPboardType]];
+    [MHFinderServicesProvider setupServices:^(NSArray *files){
+        if(self.isDoingHash){
+            [Misc openNewInstanceWithFiles:files];
+        }else{
+            [self doHashWithFiles:files shouldDelay:YES];
+        }
+    }];
 
 }
 
@@ -47,11 +55,7 @@
     if(self.isDoingHash){
         [Misc openNewInstanceWithFiles:filenames];
     }else{
-        NSMutableArray *urls = [NSMutableArray arrayWithCapacity:0];
-        for(NSString *path in filenames){
-            [urls addObject:[NSURL fileURLWithPath:path]];
-        }
-        [self doHash:urls];
+        [self doHashWithFiles:filenames shouldDelay:YES];
     }
 }
 
@@ -167,8 +171,21 @@
 }
 
 
+- (void)doHashWithFiles:(NSArray*)files  shouldDelay:(BOOL)delay
+{
+    NSMutableArray *urls = [NSMutableArray arrayWithCapacity:0];
+    for(NSString *path in files){
+        [urls addObject:[NSURL fileURLWithPath:path]];
+    }
+    [self doHash:urls shouldDelay:delay];
+}
 
 - (void) doHash:(NSArray*)fileUrls
+{
+    [self doHash:fileUrls shouldDelay:NO];
+}
+
+- (void) doHash:(NSArray*)fileUrls shouldDelay:(BOOL)delay
 {
     if([self isDoingHash]){
         return;
@@ -188,6 +205,11 @@
     [self initTotalProgress:[fileUrls count]];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        if(delay){
+            usleep(2000);
+        }
+        
         NSData *data = Nil;
         CC_MD5_CTX md5={};
         CC_MD5_CTX *md5p = NULL;

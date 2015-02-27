@@ -22,6 +22,7 @@
 		1B1C0FAF1AA0880E004B475D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FAD1AA0880E004B475D /* MainMenu.xib */; };
 		1B1C0FB21AA08C82004B475D /* MHFinderServicesProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0FB11AA08C82004B475D /* MHFinderServicesProvider.m */; };
 		1B1C0FB91AA0C0C7004B475D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FB71AA0C0C7004B475D /* Localizable.strings */; };
+		1B1C0FBC1AA0CB52004B475D /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FBA1AA0CB52004B475D /* ServicesMenu.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		1B1C0FB51AA0B146004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.rtf"; sourceTree = "<group>"; };
 		1B1C0FB61AA0B146004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1B1C0FB81AA0C0C7004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		1B1C0FBB1AA0CB52004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				1B1C0F7E1A9DF83D004B475D /* MacHash-Prefix.pch */,
 				1B1C0F7F1A9DF83D004B475D /* Credits.rtf */,
 				1B1C0FB71AA0C0C7004B475D /* Localizable.strings */,
+				1B1C0FBA1AA0CB52004B475D /* ServicesMenu.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				1B1C0F891A9DF83D004B475D /* Images.xcassets in Resources */,
 				1B1C0F811A9DF83D004B475D /* Credits.rtf in Resources */,
 				1B1C0FAF1AA0880E004B475D /* MainMenu.xib in Resources */,
+				1B1C0FBC1AA0CB52004B475D /* ServicesMenu.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +350,14 @@
 				1B1C0FB81AA0C0C7004B475D /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		1B1C0FBA1AA0CB52004B475D /* ServicesMenu.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B1C0FBB1AA0CB52004B475D /* zh-Hans */,
+			);
+			name = ServicesMenu.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

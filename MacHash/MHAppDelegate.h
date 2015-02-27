@@ -13,7 +13,7 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (unsafe_unretained) IBOutlet NSTextView *logTextView;
 @property (weak) IBOutlet NSButton *dateChecked;
-@property (weak) IBOutlet NSButton *md4Checked;
+@property (weak) IBOutlet NSButton *md5Checked;
 @property (weak) IBOutlet NSButton *sha1Checked;
 @property (weak) IBOutlet NSButton *sha256Checked;
 @property (weak) IBOutlet NSButton *crc32Checked;

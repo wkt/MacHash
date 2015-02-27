@@ -8,6 +8,12 @@
 
 #import "Misc.h"
 
+static const size_t BYTE = 1L;
+static const size_t KB = BYTE * 1024L;
+static const size_t MB = KB   * 1024L;
+static const size_t GB = MB   * 1024L;
+static const size_t TB = GB   * 1024L;
+
 @implementation Misc
 
 +(NSString*) getHashString:(unsigned char *)data datalen:(size_t) datalen
@@ -26,11 +32,26 @@
     if(fp){
         const char *ss =[s UTF8String];
         size_t n=0;
-        while(n<[s length]){
-            n+=fwrite(ss+n,1,[s length]-n, fp);
+        size_t len = [s lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+        while(n<len){
+            n+=fwrite(ss+n,1,MIN(len-n,BUFFER_SIZE), fp);
         }
         fclose(fp);
     }
+}
+
++(NSString*)byteToString:(uint64_t)size
+{
+    if(size <KB){
+        return  [NSString stringWithFormat:@"%llu Byte",size];
+    }else if(size <MB){
+        return  [NSString stringWithFormat:@"%.1f KB",size*1.0/KB];
+    }else if(size <GB){
+        return  [NSString stringWithFormat:@"%.2f MB",size*1.0/MB];
+    }else if(size <TB){
+        return  [NSString stringWithFormat:@"%.2f GB",size*1.0/GB];
+    }
+    return  [NSString stringWithFormat:@"%.2f TB",size*1.0/TB];
 }
 
 + (void)runCommand:(char* const*)args

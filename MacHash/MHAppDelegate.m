@@ -24,6 +24,7 @@
     [self initTotalProgress:1];
     [self initCurrentProgress:1];
     [self.window registerForDraggedTypes: [NSArray arrayWithObject:NSFilenamesPboardType]];
+
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
@@ -173,14 +174,15 @@
         return;
     }
     BOOL needDate = ([self.dateChecked state] == NSOnState);
-    BOOL needMD5 = ([self.md4Checked state] == NSOnState);
+    BOOL needMD5 = ([self.md5Checked state] == NSOnState);
     BOOL needSHA1 = ([self.sha1Checked state] == NSOnState);
     BOOL needSHA256 = ([self.sha256Checked state] == NSOnState);
     BOOL needCRC32 = ([self.crc32Checked state] == NSOnState);
 
     if(!(needMD5||needSHA1||needSHA256||needCRC32)){
         ///各种算法中至少要选一个
-        return;
+        needMD5 = YES;
+        [self.md5Checked setState:NSOnState];
     }
     self.isDoingHash = YES;
     [self initTotalProgress:[fileUrls count]];
@@ -214,29 +216,33 @@
 
             date = Nil;
             mdString = [NSMutableString stringWithCapacity:0];
-            [mdString appendFormat:@"File: %@\n",[url path]];
+
+            [mdString appendFormat:@"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />"
+             "</head><body><span style=\"font-size:120%%\">File</span> : %@<br />",[url path]];
              
             stat([[url path] UTF8String],&st);
             if(S_ISDIR(st.st_mode)){
-                [mdString appendString:@"Folder: YES\n"];
+                [mdString appendString:@"<span style=\"font-size:120%%\">Folder</span> : YES<br />"];
             }else{
-                [mdString appendFormat:@"Size: %lld\n",st.st_size];
-                fileTotal = st.st_size;
+                [mdString appendFormat:@"<span style=\"font-size:120%%\">Size</span> : %lld (%@)<br />",st.st_size,[Misc byteToString:st.st_size]];
             }
+            fileTotal = st.st_size;
 
             if(needDate){
                 date = [NSDate dateWithTimeIntervalSince1970:st.st_mtimespec.tv_sec];
-                [mdString appendFormat:@"Modify: %@\n",date];
+                [mdString appendFormat:@"<span style=\"font-size:120%%\">Modified</span> : %@ <br/>",[date descriptionWithLocale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]];
             }
+            if(S_ISDIR(st.st_mode))[mdString appendString:@"<br/></body></html>"];
 
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self.logTextView.textStorage appendAttributedString:
+                 [[NSAttributedString alloc] initWithHTML:
+                  [NSData dataWithBytes:[mdString UTF8String] length:[mdString lengthOfBytesUsingEncoding:NSUTF8StringEncoding] ] documentAttributes:Nil] ];
+
                 NSMutableString *newS = [NSMutableString stringWithString:[self.logTextView string]];
-                [newS appendString:mdString];
-                [self.logTextView setString:newS];
                 [self.logTextView scrollRangeToVisible:NSMakeRange([newS length],0)];
             });
             if(S_ISDIR(st.st_mode)){
-                 [mdString appendString:@"\n"];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self updateProgress:*fileCurp total:i+1];
                 });
@@ -269,33 +275,32 @@
                 }
             }];
             i++;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self updateProgress:*fileCurp total:i];
-            });
-             if(needMD5){
+            if(needMD5){
                  unsigned char md[CC_MD5_DIGEST_LENGTH] = {0};
                  CC_MD5_Final(md,md5p);
-                 [mdString appendFormat:@"MD5: %@\n",[Misc getHashString:md datalen:CC_MD5_DIGEST_LENGTH]];
+                 [mdString appendFormat:@"<span style=\"font-size:120%%\">MD5</span> : %@<br/>",[Misc getHashString:md datalen:CC_MD5_DIGEST_LENGTH]];
              }
              if(needSHA1){
                  unsigned char sha1md[CC_SHA1_DIGEST_LENGTH] = {0};
                  CC_SHA1_Final(sha1md, sha1p);
-                 [mdString appendFormat:@"SHA1: %@\n",[Misc getHashString:sha1md datalen:CC_SHA1_DIGEST_LENGTH]];
+                 [mdString appendFormat:@"<span style=\"font-size:120%%\">SHA1</span> : %@<br/>",[Misc getHashString:sha1md datalen:CC_SHA1_DIGEST_LENGTH]];
              }
             if(needSHA256){
                 unsigned char sha256md[CC_SHA256_DIGEST_LENGTH] = {0};
                 CC_SHA256_Final(sha256md, sha256p);
-                [mdString appendFormat:@"SHA256: %@\n",[Misc getHashString:sha256md datalen:CC_SHA256_DIGEST_LENGTH]];
+                [mdString appendFormat:@"<span style=\"font-size:120%%\">SHA256</span> : %@<br/>",[Misc getHashString:sha256md datalen:CC_SHA256_DIGEST_LENGTH]];
             }
             if(needCRC32){
-                [mdString appendFormat:@"CRC32: %0lX\n",[crc32 finish]];
+                [mdString appendFormat:@"<span style=\"font-size:120%%\">CRC32</span> : %0lX<br/>",[crc32 finish]];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-                 NSMutableString *newS = [NSMutableString stringWithString:[self.logTextView string]];
-                 [newS appendString:mdString];
-                 [newS appendString:@"\n"];
-                 [self.logTextView setString:newS];
+                [mdString appendString:@"<br/>"];
+                [self.logTextView.textStorage appendAttributedString:
+                 [[NSAttributedString alloc] initWithHTML:
+                  [NSData dataWithBytes:[mdString UTF8String] length:[mdString length] ] documentAttributes:Nil] ];
+                NSMutableString *newS = [NSMutableString stringWithString:[self.logTextView string]];
                 [self.logTextView scrollRangeToVisible:NSMakeRange([newS length],0)];
+                [self updateProgress:*fileCurp total:i];
              });
 
             ///刚刚算完休息一下

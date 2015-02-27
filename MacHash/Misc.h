@@ -16,4 +16,6 @@
 +(void) setStringToURL:(NSURL*)url data:(NSString*)s;
 +(void)openNewInstanceWithFiles:(NSArray*)filenames;
 +(void)openNewInstanceWithFile:(NSString*)filename;
++(NSString*)byteToString:(uint64_t)size;
+
 @end

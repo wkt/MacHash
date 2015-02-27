@@ -12,7 +12,6 @@
 		1B1C0F7D1A9DF83D004B475D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0F7C1A9DF83D004B475D /* main.m */; };
 		1B1C0F811A9DF83D004B475D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0F7F1A9DF83D004B475D /* Credits.rtf */; };
 		1B1C0F841A9DF83D004B475D /* MHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0F831A9DF83D004B475D /* MHAppDelegate.m */; };
-		1B1C0F871A9DF83D004B475D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0F851A9DF83D004B475D /* MainMenu.xib */; };
 		1B1C0F891A9DF83D004B475D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0F881A9DF83D004B475D /* Images.xcassets */; };
 		1B1C0F901A9DF83D004B475D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1C0F8F1A9DF83D004B475D /* XCTest.framework */; };
 		1B1C0F911A9DF83D004B475D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1C0F701A9DF83D004B475D /* Cocoa.framework */; };
@@ -20,6 +19,7 @@
 		1B1C0F9B1A9DF83D004B475D /* MacHashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0F9A1A9DF83D004B475D /* MacHashTests.m */; };
 		1B1C0FA61A9E169E004B475D /* MHCrc32.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0FA51A9E169E004B475D /* MHCrc32.m */; };
 		1B1C0FA91A9F576B004B475D /* Misc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0FA81A9F576B004B475D /* Misc.m */; };
+		1B1C0FAF1AA0880E004B475D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FAD1AA0880E004B475D /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,6 @@
 		1B1C0F801A9DF83D004B475D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		1B1C0F821A9DF83D004B475D /* MHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHAppDelegate.h; sourceTree = "<group>"; };
 		1B1C0F831A9DF83D004B475D /* MHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAppDelegate.m; sourceTree = "<group>"; };
-		1B1C0F861A9DF83D004B475D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1B1C0F881A9DF83D004B475D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B1C0F8E1A9DF83D004B475D /* MacHashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacHashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B1C0F8F1A9DF83D004B475D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -56,6 +55,7 @@
 		1B1C0FA51A9E169E004B475D /* MHCrc32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCrc32.m; sourceTree = "<group>"; };
 		1B1C0FA71A9F576B004B475D /* Misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Misc.h; sourceTree = "<group>"; };
 		1B1C0FA81A9F576B004B475D /* Misc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Misc.m; sourceTree = "<group>"; };
+		1B1C0FAE1AA0880E004B475D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +127,7 @@
 				1B1C0FA51A9E169E004B475D /* MHCrc32.m */,
 				1B1C0F821A9DF83D004B475D /* MHAppDelegate.h */,
 				1B1C0F831A9DF83D004B475D /* MHAppDelegate.m */,
-				1B1C0F851A9DF83D004B475D /* MainMenu.xib */,
+				1B1C0FAD1AA0880E004B475D /* MainMenu.xib */,
 				1B1C0F881A9DF83D004B475D /* Images.xcassets */,
 				1B1C0F771A9DF83D004B475D /* Supporting Files */,
 			);
@@ -244,7 +244,7 @@
 				1B1C0F7B1A9DF83D004B475D /* InfoPlist.strings in Resources */,
 				1B1C0F891A9DF83D004B475D /* Images.xcassets in Resources */,
 				1B1C0F811A9DF83D004B475D /* Credits.rtf in Resources */,
-				1B1C0F871A9DF83D004B475D /* MainMenu.xib in Resources */,
+				1B1C0FAF1AA0880E004B475D /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,20 +305,20 @@
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		1B1C0F851A9DF83D004B475D /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B1C0F861A9DF83D004B475D /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		1B1C0F971A9DF83D004B475D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1B1C0F981A9DF83D004B475D /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1B1C0FAD1AA0880E004B475D /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B1C0FAE1AA0880E004B475D /* Base */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -356,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -389,7 +389,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -402,7 +402,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacHash/MacHash-Prefix.pch";
 				INFOPLIST_FILE = "MacHash/MacHash-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -416,7 +416,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacHash/MacHash-Prefix.pch";
 				INFOPLIST_FILE = "MacHash/MacHash-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -12,7 +12,7 @@
 #import "Misc.h"
 #include <sys/stat.h>
 #import "MHFinderServicesProvider.h"
-
+#import "NSAlertCompat.h"
 #include <CommonCrypto/CommonDigest.h>
 
 @implementation MHAppDelegate
@@ -78,7 +78,8 @@
                                        alternateButton:NSLocalizedString(@"NO",Nil)
                                            otherButton:nil
                              informativeTextWithFormat:NSLocalizedString(@"Quit now?",Nil)];
-                if (NSAlertDefaultReturn == [alert runModal])
+        long ret = [NSAlertCompat runAlertSheetModal:alert sheetWindow:self.window];
+        if (NSAlertFirstButtonReturn == ret)
         {
             res = YES;
         }
@@ -275,8 +276,9 @@
                 [self.logTextView scrollRangeToVisible:NSMakeRange([newS length],0)];
             });
             if(S_ISDIR(st.st_mode)){
+                i++;
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self updateProgress:*fileCurp total:i+1];
+                    [self updateProgress:*fileCurp total:i];
                 });
                 continue;
             }

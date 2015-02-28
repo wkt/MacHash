@@ -23,6 +23,7 @@
 		1B1C0FB21AA08C82004B475D /* MHFinderServicesProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0FB11AA08C82004B475D /* MHFinderServicesProvider.m */; };
 		1B1C0FB91AA0C0C7004B475D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FB71AA0C0C7004B475D /* Localizable.strings */; };
 		1B1C0FBC1AA0CB52004B475D /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FBA1AA0CB52004B475D /* ServicesMenu.strings */; };
+		1BEBA1FD1AA1637D0003FED2 /* NSAlertCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBA1FC1AA1637D0003FED2 /* NSAlertCompat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		1B1C0FB61AA0B146004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1B1C0FB81AA0C0C7004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1B1C0FBB1AA0CB52004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
+		1BEBA1FB1AA1637D0003FED2 /* NSAlertCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAlertCompat.h; sourceTree = "<group>"; };
+		1BEBA1FC1AA1637D0003FED2 /* NSAlertCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAlertCompat.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				1B1C0F831A9DF83D004B475D /* MHAppDelegate.m */,
 				1B1C0FB01AA08C82004B475D /* MHFinderServicesProvider.h */,
 				1B1C0FB11AA08C82004B475D /* MHFinderServicesProvider.m */,
+				1BEBA1FB1AA1637D0003FED2 /* NSAlertCompat.h */,
+				1BEBA1FC1AA1637D0003FED2 /* NSAlertCompat.m */,
 				1B1C0FAD1AA0880E004B475D /* MainMenu.xib */,
 				1B1C0F881A9DF83D004B475D /* Images.xcassets */,
 				1B1C0F771A9DF83D004B475D /* Supporting Files */,
@@ -286,6 +291,7 @@
 				1B1C0FB21AA08C82004B475D /* MHFinderServicesProvider.m in Sources */,
 				1B1C0F841A9DF83D004B475D /* MHAppDelegate.m in Sources */,
 				1B1C0FA61A9E169E004B475D /* MHCrc32.m in Sources */,
+				1BEBA1FD1AA1637D0003FED2 /* NSAlertCompat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +526,7 @@
 				1B1C0FA01A9DF83D004B475D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1B1C0FA11A9DF83D004B475D /* Build configuration list for PBXNativeTarget "MacHashTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +535,7 @@
 				1B1C0FA31A9DF83D004B475D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

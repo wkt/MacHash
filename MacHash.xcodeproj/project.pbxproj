@@ -72,6 +72,7 @@
 		1BEBA1FB1AA1637D0003FED2 /* NSAlertCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAlertCompat.h; sourceTree = "<group>"; };
 		1BEBA1FC1AA1637D0003FED2 /* NSAlertCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAlertCompat.m; sourceTree = "<group>"; };
 		1BEBA22A1AA204FC0003FED2 /* machash.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = machash.icns; path = ../machash.icns; sourceTree = "<group>"; };
+		1BEBA22D1AA20F060003FED2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +351,7 @@
 			children = (
 				1B1C0FAE1AA0880E004B475D /* Base */,
 				1B1C0FB31AA0B146004B475D /* zh-Hans */,
+				1BEBA22D1AA20F060003FED2 /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";

@@ -52,6 +52,8 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
+	<key>CFBundleDisplayName</key>
+	<string>Checksum calculator</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -76,7 +78,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Calculate the checksum</string>
+				<string>Calculate checksum</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>openForHash</string>

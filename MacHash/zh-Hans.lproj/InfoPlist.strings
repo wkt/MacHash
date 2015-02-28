@@ -2,5 +2,7 @@
 
 CFBundleName = "校验码计算器";
 CFBundleDisplayName = "校验码计算器";
+"Checksum calculator" = "校验码计算器";
+"MacHash" = "test";
 NSHumanReadableCopyright = "Copyright © 2015年 weiketing.com. All rights reserved.";
 

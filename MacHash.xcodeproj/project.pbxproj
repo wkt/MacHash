@@ -24,6 +24,8 @@
 		1B1C0FB91AA0C0C7004B475D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FB71AA0C0C7004B475D /* Localizable.strings */; };
 		1B1C0FBC1AA0CB52004B475D /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FBA1AA0CB52004B475D /* ServicesMenu.strings */; };
 		1BEBA1FD1AA1637D0003FED2 /* NSAlertCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBA1FC1AA1637D0003FED2 /* NSAlertCompat.m */; };
+		1BEBA2291AA2042C0003FED2 /* machash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBA2281AA2042C0003FED2 /* machash.png */; };
+		1BEBA22B1AA204FC0003FED2 /* machash.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBA22A1AA204FC0003FED2 /* machash.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		1B1C0FBB1AA0CB52004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 		1BEBA1FB1AA1637D0003FED2 /* NSAlertCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAlertCompat.h; sourceTree = "<group>"; };
 		1BEBA1FC1AA1637D0003FED2 /* NSAlertCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAlertCompat.m; sourceTree = "<group>"; };
+		1BEBA2281AA2042C0003FED2 /* machash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = machash.png; sourceTree = "<group>"; };
+		1BEBA22A1AA204FC0003FED2 /* machash.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = machash.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 		1B1C0F641A9DF83C004B475D = {
 			isa = PBXGroup;
 			children = (
+				1BEBA22A1AA204FC0003FED2 /* machash.icns */,
+				1BEBA2281AA2042C0003FED2 /* machash.png */,
 				1B1C0F761A9DF83D004B475D /* MacHash */,
 				1B1C0F941A9DF83D004B475D /* MacHashTests */,
 				1B1C0F6F1A9DF83D004B475D /* Frameworks */,
@@ -266,7 +272,9 @@
 				1B1C0F7B1A9DF83D004B475D /* InfoPlist.strings in Resources */,
 				1B1C0F891A9DF83D004B475D /* Images.xcassets in Resources */,
 				1B1C0F811A9DF83D004B475D /* Credits.rtf in Resources */,
+				1BEBA22B1AA204FC0003FED2 /* machash.icns in Resources */,
 				1B1C0FAF1AA0880E004B475D /* MainMenu.xib in Resources */,
+				1BEBA2291AA2042C0003FED2 /* machash.png in Resources */,
 				1B1C0FBC1AA0CB52004B475D /* ServicesMenu.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,7 +450,6 @@
 		1B1C0F9F1A9DF83D004B475D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacHash/MacHash-Prefix.pch";
@@ -456,7 +463,6 @@
 		1B1C0FA01A9DF83D004B475D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacHash/MacHash-Prefix.pch";

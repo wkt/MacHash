@@ -34,6 +34,9 @@
         }
     }];
     _orginalTitle = [self.window title].copy;
+    dockProgressBar = [DockCircularProgressBar sharedDockCircularProgressBar];
+    [dockProgressBar setProgress:0];
+    [dockProgressBar setIndicateNunber:0];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
@@ -60,13 +63,6 @@
     }
 }
 
-/*
-- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
-{
-    if(self.isDoingHash)return NSTerminateCancel;
-    return NSTerminateNow;
-}
- */
 
 - (BOOL)windowShouldClose:(id)sender
 {
@@ -164,12 +160,16 @@
     [self.currentFileProgress setMinValue:0];
     [self.currentFileProgress setDoubleValue:0];
     [self.currentFileProgress setMaxValue:currentMax];
+    [dockProgressBar setProgress:0];
+    [dockProgressBar setIndicateNunber:[_totalProgress maxValue]];
 }
 
 -(void)updateProgress:(double)current total:(double)total
 {
     [self.currentFileProgress setDoubleValue:current];
     [self.totalProgress setDoubleValue:total];
+    [dockProgressBar setProgress:total/[_totalProgress maxValue]];
+    [dockProgressBar setIndicateNunber:[_totalProgress maxValue] -total+1];
 }
 
 
@@ -192,7 +192,7 @@
     if([self isDoingHash]){
         return;
     }
-    BOOL needDate = ([self.dateChecked state] == NSOnState);
+
     BOOL needMD5 = ([self.md5Checked state] == NSOnState);
     BOOL needSHA1 = ([self.sha1Checked state] == NSOnState);
     BOOL needSHA256 = ([self.sha256Checked state] == NSOnState);
@@ -259,12 +259,13 @@
             }
             fileTotal = st.st_size;
 
-            if(needDate){
-                date = [NSDate dateWithTimeIntervalSince1970:st.st_mtimespec.tv_sec];
-                [mdString appendFormat:@"<span style=\"font-size:120%%\">%@</span> : %@ <br/>",
-                 NSLocalizedString(@"Modified",Nil),
-                 [date descriptionWithLocale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]];
-            }
+            date = [NSDate dateWithTimeIntervalSince1970:st.st_mtimespec.tv_sec];
+            [mdString appendFormat:@"<span style=\"font-size:120%%\">%@</span> : %@ <br/>",
+                    NSLocalizedString(@"Modified",Nil),
+                    [date descriptionWithLocale:
+                        [[NSUserDefaults standardUserDefaults]
+                         dictionaryRepresentation]]];
+
             if(S_ISDIR(st.st_mode))[mdString appendString:@"<br/></body></html>"];
 
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -278,7 +279,8 @@
             if(S_ISDIR(st.st_mode)){
                 i++;
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self updateProgress:*fileCurp total:i];
+                    [self initCurrentProgress:1];
+                    [self updateProgress:1.0 total:i];
                 });
                 continue;
             }
@@ -305,7 +307,8 @@
                 if(time(NULL)-*lastTimep>=1){
                     *lastTimep=time(lastTimep);
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self updateProgress:*fileCurp total:i+(*fileCurp*1.0/fileTotal)/[fileUrls count]];
+                        float totalprogress = i+(*fileCurp*1.0/fileTotal);
+                        [self updateProgress:*fileCurp total:totalprogress];
                     });
                 }
             }];
@@ -328,20 +331,25 @@
             if(needCRC32){
                 [mdString appendFormat:@"<span style=\"font-size:120%%\">CRC32</span> : %0lX<br/>",[crc32 finish]];
             }
+            *fileCurp = fileTotal;
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self updateProgress:*fileCurp total:i];
                 [mdString appendString:@"<br/>"];
                 [self.logTextView.textStorage appendAttributedString:
                  [[NSAttributedString alloc] initWithHTML:
                   [NSData dataWithBytes:[mdString UTF8String] length:[mdString length] ] documentAttributes:Nil] ];
                 NSMutableString *newS = [NSMutableString stringWithString:[self.logTextView string]];
                 [self.logTextView scrollRangeToVisible:NSMakeRange([newS length],0)];
-                [self updateProgress:*fileCurp total:i];
              });
 
             ///刚刚算完休息一下
             usleep(500);
          }
-         self.isDoingHash = NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [dockProgressBar setIndicateNunber:0];
+            [NSApp requestUserAttention:NSCriticalRequest];
+            self.isDoingHash = NO;
+        });
      });
 }
               

@@ -53,21 +53,19 @@
              userData:(NSString *)userData error:(NSString **)error
 {
     if(!_hashFiles)return;
-    NSArray *classes = [NSArray arrayWithObject:[NSString class]];
-    NSDictionary *options = [NSDictionary dictionary];
-    
-    if (![pboard canReadObjectForClasses:classes options:options]) {
-        *error = NSLocalizedString(@"Error: couldn't encrypt text.",
-                                   @"pboard couldn't give string.");
+
+    if(![[pboard types] containsObject:NSFilenamesPboardType]){
+        *error = NSLocalizedString(@"Error: bad Pboard type",
+                                   @"hash failed");
         return;
     }
     
-    NSString *pboardString = [pboard stringForType:NSPasteboardTypeString];
-    NSArray *files = [MHFinderServicesProvider filenamesFrom:pboardString];
-    if (!files) {
-        *error = NSLocalizedString(@"Error: couldn't encrypt text.",
-                                   @"self couldn't rotate letters.");
-        return;
+    NSArray *files = NULL;
+    NSArray *items = [pboard pasteboardItems];
+    for (NSPasteboardItem *i in items) {
+        NSURL *url = [NSURL URLWithString:[i stringForType:@"public.file-url"]];
+        if(files == NULL)files = [NSMutableArray arrayWithObject:[url path]];
+        else [(NSMutableArray*)files addObject:[url path]];
     }
     
     _hashFiles(files);

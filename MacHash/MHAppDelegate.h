@@ -7,14 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DockCircularProgressBar.h"
 
 @interface MHAppDelegate : NSObject <NSApplicationDelegate,NSWindowDelegate,NSDraggingDestination>{
     NSString *_orginalTitle;
+    DockCircularProgressBar *dockProgressBar;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 @property (unsafe_unretained) IBOutlet NSTextView *logTextView;
-@property (weak) IBOutlet NSButton *dateChecked;
 @property (weak) IBOutlet NSButton *md5Checked;
 @property (weak) IBOutlet NSButton *sha1Checked;
 @property (weak) IBOutlet NSButton *sha256Checked;

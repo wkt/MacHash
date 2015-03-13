@@ -23,7 +23,9 @@
 		1B1C0FB21AA08C82004B475D /* MHFinderServicesProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1C0FB11AA08C82004B475D /* MHFinderServicesProvider.m */; };
 		1B1C0FB91AA0C0C7004B475D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FB71AA0C0C7004B475D /* Localizable.strings */; };
 		1B1C0FBC1AA0CB52004B475D /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B1C0FBA1AA0CB52004B475D /* ServicesMenu.strings */; };
+		1B8B8B681AAC1ED200102E2F /* UpdateLogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B8B8B661AAC1ED200102E2F /* UpdateLogView.xib */; };
 		1BAAB00D1AA99DEC00C0AF13 /* DockCircularProgressBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BAAB00B1AA99DEC00C0AF13 /* DockCircularProgressBar.mm */; };
+		1BC3BE691AA9E3850047FF22 /* UpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC3BE681AA9E3850047FF22 /* UpdateManager.m */; };
 		1BEBA1FD1AA1637D0003FED2 /* NSAlertCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBA1FC1AA1637D0003FED2 /* NSAlertCompat.m */; };
 		1BEBA22B1AA204FC0003FED2 /* machash.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBA22A1AA204FC0003FED2 /* machash.icns */; };
 /* End PBXBuildFile section */
@@ -39,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1B1C0F6D1A9DF83D004B475D /* MacHash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacHash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B1C0F6D1A9DF83D004B475D /* Checksum Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Checksum Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B1C0F701A9DF83D004B475D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1B1C0F731A9DF83D004B475D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		1B1C0F741A9DF83D004B475D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -70,8 +72,12 @@
 		1B1C0FB61AA0B146004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1B1C0FB81AA0C0C7004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1B1C0FBB1AA0CB52004B475D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
+		1B8B8B671AAC1ED200102E2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/UpdateLogView.xib; sourceTree = "<group>"; };
 		1BAAB00B1AA99DEC00C0AF13 /* DockCircularProgressBar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DockCircularProgressBar.mm; sourceTree = "<group>"; };
 		1BAAB00C1AA99DEC00C0AF13 /* DockCircularProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockCircularProgressBar.h; sourceTree = "<group>"; };
+		1BC3BE671AA9E3850047FF22 /* UpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateManager.h; sourceTree = "<group>"; };
+		1BC3BE681AA9E3850047FF22 /* UpdateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateManager.m; sourceTree = "<group>"; };
+		1BC4ED0A1AAF470C00FF6DA0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UpdateLogView.strings"; sourceTree = "<group>"; };
 		1BEBA1FB1AA1637D0003FED2 /* NSAlertCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAlertCompat.h; sourceTree = "<group>"; };
 		1BEBA1FC1AA1637D0003FED2 /* NSAlertCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAlertCompat.m; sourceTree = "<group>"; };
 		1BEBA22A1AA204FC0003FED2 /* machash.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = machash.icns; path = ../machash.icns; sourceTree = "<group>"; };
@@ -112,7 +118,7 @@
 		1B1C0F6E1A9DF83D004B475D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B1C0F6D1A9DF83D004B475D /* MacHash.app */,
+				1B1C0F6D1A9DF83D004B475D /* Checksum Calculator.app */,
 				1B1C0F8E1A9DF83D004B475D /* MacHashTests.xctest */,
 			);
 			name = Products;
@@ -156,6 +162,9 @@
 				1B1C0FAD1AA0880E004B475D /* MainMenu.xib */,
 				1B1C0F881A9DF83D004B475D /* Images.xcassets */,
 				1B1C0F771A9DF83D004B475D /* Supporting Files */,
+				1BC3BE671AA9E3850047FF22 /* UpdateManager.h */,
+				1BC3BE681AA9E3850047FF22 /* UpdateManager.m */,
+				1B8B8B661AAC1ED200102E2F /* UpdateLogView.xib */,
 			);
 			path = MacHash;
 			sourceTree = "<group>";
@@ -196,9 +205,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1B1C0F6C1A9DF83C004B475D /* MacHash */ = {
+		1B1C0F6C1A9DF83C004B475D /* Checksum Calculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B1C0F9E1A9DF83D004B475D /* Build configuration list for PBXNativeTarget "MacHash" */;
+			buildConfigurationList = 1B1C0F9E1A9DF83D004B475D /* Build configuration list for PBXNativeTarget "Checksum Calculator" */;
 			buildPhases = (
 				1B1C0F691A9DF83C004B475D /* Sources */,
 				1B1C0F6A1A9DF83C004B475D /* Frameworks */,
@@ -208,9 +217,9 @@
 			);
 			dependencies = (
 			);
-			name = MacHash;
+			name = "Checksum Calculator";
 			productName = MacHash;
-			productReference = 1B1C0F6D1A9DF83D004B475D /* MacHash.app */;
+			productReference = 1B1C0F6D1A9DF83D004B475D /* Checksum Calculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1B1C0F8D1A9DF83D004B475D /* MacHashTests */ = {
@@ -260,7 +269,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1B1C0F6C1A9DF83C004B475D /* MacHash */,
+				1B1C0F6C1A9DF83C004B475D /* Checksum Calculator */,
 				1B1C0F8D1A9DF83D004B475D /* MacHashTests */,
 			);
 		};
@@ -273,6 +282,7 @@
 			files = (
 				1B1C0FB91AA0C0C7004B475D /* Localizable.strings in Resources */,
 				1B1C0F7B1A9DF83D004B475D /* InfoPlist.strings in Resources */,
+				1B8B8B681AAC1ED200102E2F /* UpdateLogView.xib in Resources */,
 				1B1C0F891A9DF83D004B475D /* Images.xcassets in Resources */,
 				1B1C0F811A9DF83D004B475D /* Credits.rtf in Resources */,
 				1BEBA22B1AA204FC0003FED2 /* machash.icns in Resources */,
@@ -296,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BC3BE691AA9E3850047FF22 /* UpdateManager.m in Sources */,
 				1B1C0F7D1A9DF83D004B475D /* main.m in Sources */,
 				1B1C0FA91A9F576B004B475D /* Misc.m in Sources */,
 				1B1C0FB21AA08C82004B475D /* MHFinderServicesProvider.m in Sources */,
@@ -319,7 +330,7 @@
 /* Begin PBXTargetDependency section */
 		1B1C0F931A9DF83D004B475D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1B1C0F6C1A9DF83C004B475D /* MacHash */;
+			target = 1B1C0F6C1A9DF83C004B475D /* Checksum Calculator */;
 			targetProxy = 1B1C0F921A9DF83D004B475D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -378,6 +389,15 @@
 			name = ServicesMenu.strings;
 			sourceTree = "<group>";
 		};
+		1B8B8B661AAC1ED200102E2F /* UpdateLogView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B8B8B671AAC1ED200102E2F /* Base */,
+				1BC4ED0A1AAF470C00FF6DA0 /* zh-Hans */,
+			);
+			name = UpdateLogView.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -415,7 +435,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -447,7 +467,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
@@ -529,7 +549,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1B1C0F9E1A9DF83D004B475D /* Build configuration list for PBXNativeTarget "MacHash" */ = {
+		1B1C0F9E1A9DF83D004B475D /* Build configuration list for PBXNativeTarget "Checksum Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B1C0F9F1A9DF83D004B475D /* Debug */,

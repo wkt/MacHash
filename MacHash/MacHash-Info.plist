@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Checksum calculator</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -47,13 +49,11 @@
 	<key>CFBundleIconFile</key>
 	<string>machash</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.weiketing.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.weiketing.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
-	<key>CFBundleDisplayName</key>
-	<string>Checksum calculator</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -78,7 +78,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Calculate checksum</string>
+				<string>Calculate Checksum</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>openForHash</string>

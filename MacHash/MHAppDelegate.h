@@ -23,6 +23,7 @@
 @property (weak) IBOutlet NSView *topView;
 @property (weak) IBOutlet NSProgressIndicator *currentFileProgress;
 @property (weak) IBOutlet NSProgressIndicator *totalProgress;
+- (IBAction)checkForUpdates:(id)sender;
 
 
 @property BOOL isDoingHash;

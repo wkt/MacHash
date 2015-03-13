@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1B1C0F6C1A9DF83C004B475D"
-               BuildableName = "MacHash.app"
-               BlueprintName = "MacHash"
-               ReferencedContainer = "container:MacHash.xcodeproj">
+               BuildableName = "Checksum Calculator.app"
+               BlueprintName = "Checksum Calculator"
+               ReferencedContainer = "container:../../../../../../Users/wkt/projects/MacHash/MacHash.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "1B1C0F8D1A9DF83D004B475D"
                BuildableName = "MacHashTests.xctest"
                BlueprintName = "MacHashTests"
-               ReferencedContainer = "container:MacHash.xcodeproj">
+               ReferencedContainer = "container:../../../../../../Users/wkt/projects/MacHash/MacHash.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1B1C0F6C1A9DF83C004B475D"
-            BuildableName = "MacHash.app"
-            BlueprintName = "MacHash"
-            ReferencedContainer = "container:MacHash.xcodeproj">
+            BuildableName = "Checksum Calculator.app"
+            BlueprintName = "Checksum Calculator"
+            ReferencedContainer = "container:../../../../../../Users/wkt/projects/MacHash/MacHash.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1B1C0F6C1A9DF83C004B475D"
-            BuildableName = "MacHash.app"
-            BlueprintName = "MacHash"
-            ReferencedContainer = "container:MacHash.xcodeproj">
+            BuildableName = "Checksum Calculator.app"
+            BlueprintName = "Checksum Calculator"
+            ReferencedContainer = "container:../../../../../../Users/wkt/projects/MacHash/MacHash.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1B1C0F6C1A9DF83C004B475D"
-            BuildableName = "MacHash.app"
-            BlueprintName = "MacHash"
-            ReferencedContainer = "container:MacHash.xcodeproj">
+            BuildableName = "Checksum Calculator.app"
+            BlueprintName = "Checksum Calculator"
+            ReferencedContainer = "container:../../../../../../Users/wkt/projects/MacHash/MacHash.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

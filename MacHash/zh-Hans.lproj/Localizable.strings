@@ -14,3 +14,10 @@
 "Size" = "大小";
 "Byte" = "字节";
 "Modified" = "修改时间";
+"A new version is available"="发现新版本";
+"Download Now"="立即下载";
+"Reminer Me Later"="稍后再提示";
+"%@ %@ is available--You have %@. Would you like to download it now?"="%@ %@ 已经可供下载—你现在的版本是%@。你需要现在下载它吗？";
+"Software Update"="软件更新";
+"%@ is up to date."="%@已经是最新版。";
+"Version %@" = "当前版本 %@"

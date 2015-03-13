@@ -1,18 +1,18 @@
 
-/* Class = "NSMenuItem"; title = "Checksum calculator"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "Checksum calculator";
+/* Class = "NSMenuItem"; title = "Checksum Calculator"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Checksum Calculator";
 
 /* Class = "NSButtonCell"; title = "SHA256"; ObjectID = "1vg-Bz-ccw"; */
 "1vg-Bz-ccw.title" = "SHA256";
 
-/* Class = "NSMenuItem"; title = "Quit Checksum calculator"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Quit Checksum calculator";
+/* Class = "NSMenuItem"; title = "Quit Checksum Calculator"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit Checksum Calculator";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
 "5QF-Oa-p0T.title" = "Edit";
 
-/* Class = "NSMenuItem"; title = "About Checksum calculator"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "About Checksum calculator";
+/* Class = "NSMenuItem"; title = "About Checksum Calculator"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About Checksum Calculator";
 
 /* Class = "NSTextFieldCell"; title = "Total:"; ObjectID = "885-tZ-gap"; */
 "885-tZ-gap.title" = "Total:";
@@ -29,8 +29,8 @@
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "Help";
 
-/* Class = "NSMenuItem"; title = "Checksum calculator Help"; ObjectID = "FKE-Sm-Kum"; */
-"FKE-Sm-Kum.title" = "Checksum calculator Help";
+/* Class = "NSMenuItem"; title = "Checksum Calculator Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "Checksum Calculator Help";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Clear the result(s)"; ObjectID = "FRp-ft-lkd"; */
 "FRp-ft-lkd.ibShadowedToolTip" = "Clear the result(s)";
@@ -50,14 +50,14 @@
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
 "OY7-WF-poV.title" = "Minimize";
 
-/* Class = "NSMenuItem"; title = "Hide Checksum calculator"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Hide Checksum calculator";
+/* Class = "NSMenuItem"; title = "Hide Checksum Calculator"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Hide Checksum Calculator";
 
 /* Class = "NSButtonCell"; title = "CRC32"; ObjectID = "OyO-lq-rfi"; */
 "OyO-lq-rfi.title" = "CRC32";
 
-/* Class = "NSWindow"; title = "Checksum calculator"; ObjectID = "QvC-M9-y7g"; */
-"QvC-M9-y7g.title" = "Checksum calculator";
+/* Class = "NSWindow"; title = "Checksum Calculator"; ObjectID = "QvC-M9-y7g"; */
+"QvC-M9-y7g.title" = "Checksum Calculator";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "Zoom";
@@ -98,8 +98,8 @@
 /* Class = "NSTextFieldCell"; title = "File:"; ObjectID = "otw-4p-13z"; */
 "otw-4p-13z.title" = "File:";
 
-/* Class = "NSMenu"; title = "Checksum calculator"; ObjectID = "uQy-DD-JDr"; */
-"uQy-DD-JDr.title" = "Checksum calculator";
+/* Class = "NSMenu"; title = "Checksum Calculator"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Checksum Calculator";
 
 /* Class = "NSScrollView"; ibShadowedToolTip = "Drop file(s) to this window"; ObjectID = "uYX-Ko-6HI"; */
 "uYX-Ko-6HI.ibShadowedToolTip" = "Drop file(s) to this window";

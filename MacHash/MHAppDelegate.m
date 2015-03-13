@@ -13,6 +13,8 @@
 #include <sys/stat.h>
 #import "MHFinderServicesProvider.h"
 #import "NSAlertCompat.h"
+#import "UpdateManager.h"
+
 #include <CommonCrypto/CommonDigest.h>
 
 @implementation MHAppDelegate
@@ -37,6 +39,8 @@
     dockProgressBar = [DockCircularProgressBar sharedDockCircularProgressBar];
     [dockProgressBar setProgress:0];
     [dockProgressBar setIndicateNunber:0];
+    [UpdateManager checkForUpdateWithWindow:self.window isLaunching:YES];
+
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
@@ -370,6 +374,9 @@
     }
 }
 
+- (IBAction)checkForUpdates:(id)sender {
+    [UpdateManager checkForUpdateWithWindow:self.window isLaunching:false];
+}
 @end
 
 

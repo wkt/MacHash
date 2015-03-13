@@ -1,5 +1,5 @@
 /* Localized versions of Info.plist keys */
 
-CFBundleName = "Checksum calculator";
-CFBundleDisplayName = "Checksum calculator";
+CFBundleName = "Checksum Calculator";
+CFBundleDisplayName = "Checksum Calculator";
 NSHumanReadableCopyright = "Copyright © 2015 weiketing.com. All rights reserved.";

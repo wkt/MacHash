@@ -92,4 +92,19 @@ static const size_t TB = GB   * 1024L;
     [Misc openNewInstanceWithFiles:[NSArray arrayWithObject:filename]];
 }
 
++(void)lionCompatForBaseLproj
+{
+    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSProcessInfo *pi = [NSProcessInfo processInfo];
+    NSString *osVersion = [pi operatingSystemVersionString];
+    
+    NSMutableString *cmd = [NSMutableString stringWithFormat:@"cd '%@/en.lproj/';",resourcePath];
+    if(strnstr([osVersion UTF8String],"10.7",[osVersion lengthOfBytesUsingEncoding:NSUTF8StringEncoding])){
+        [cmd appendString:@"/bin/ln -sf ../Base.lproj/*.nib ."];
+    }else{
+        [cmd appendString:@"/bin/rm *.nib"];
+    }
+    system([cmd UTF8String]);
+}
+
 @end

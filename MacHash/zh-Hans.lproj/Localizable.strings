@@ -20,4 +20,5 @@
 "%@ %@ is available--You have %@. Would you like to download it now?"="%@ %@ 已经可供下载—你现在的版本是%@。你需要现在下载它吗？";
 "Software Update"="软件更新";
 "%@ is up to date."="%@已经是最新版。";
-"Version %@" = "当前版本 %@"
+"Version %@" = "当前版本 %@";
+"\n*** Process stoped as request! ***\n\n"="\n*** 校验码计算任务已被中断！***\n\n";

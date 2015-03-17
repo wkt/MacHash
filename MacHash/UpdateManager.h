@@ -10,7 +10,7 @@
 
 @protocol UpdateInfo
 
--(NSUInteger) versionCode;
+-(NSUInteger)versionCode;
 -(NSString *)versionName;
 -(NSString *)downloadURL;
 -(NSString *)browseURL;

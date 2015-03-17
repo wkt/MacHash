@@ -26,10 +26,12 @@
 - (IBAction)checkForUpdates:(id)sender;
 
 
+@property (readonly)BOOL _canHashing;
 @property BOOL isDoingHash;
 
 - (IBAction)browserFiles:(id)sender;
 - (IBAction)clearLog:(id)sender;
 
 - (IBAction)saveLog:(id)sender;
+- (IBAction)stopHashing:(id)sender;
 @end

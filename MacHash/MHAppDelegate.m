@@ -43,6 +43,11 @@
 
 }
 
+- (void)applicationWillFinishLaunching:(NSNotification *)aNotification
+{
+
+}
+
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
 {
     return YES;
@@ -90,6 +95,10 @@
     return res;
 }
 
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
+    __canHashing = NO;
+}
 
 #pragma mark - Destination Operations
 
@@ -152,6 +161,10 @@
     }];
 }
 
+- (IBAction)stopHashing:(id)sender {
+    __canHashing = NO;
+}
+
 - (void)initTotalProgress:(double)totalMax
 {
     [self.totalProgress setMinValue:0];
@@ -208,6 +221,7 @@
         [self.md5Checked setState:NSOnState];
     }
     self.isDoingHash = YES;
+    __canHashing = YES;
     [self initTotalProgress:[fileUrls count]];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -317,6 +331,7 @@
                 }
             }];
             i++;
+            if(!self._canHashing)break;
             if(needMD5){
                  unsigned char md[CC_MD5_DIGEST_LENGTH] = {0};
                  CC_MD5_Final(md,md5p);
@@ -352,6 +367,11 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [dockProgressBar setIndicateNunber:0];
             [NSApp requestUserAttention:NSCriticalRequest];
+            if(!self._canHashing){
+                [self.logTextView.textStorage appendAttributedString:[[NSAttributedString alloc]
+                                                                  initWithString:
+                                                                      NSLocalizedString(@"\n*** Process stoped as request! ***\n\n",Nil)]];
+            }
             self.isDoingHash = NO;
         });
      });
@@ -368,6 +388,7 @@
             while(!feof(fp)){
                 datalen = fread(data, 1,BUFFER_SIZE, fp);
                 if(datalen >0)readFunc(data,datalen);
+                if(!self._canHashing)break;
             }
             fclose(fp);
         }

@@ -17,5 +17,6 @@
 +(void)openNewInstanceWithFiles:(NSArray*)filenames;
 +(void)openNewInstanceWithFile:(NSString*)filename;
 +(NSString*)byteToString:(uint64_t)size;
++(void)lionCompatForBaseLproj;
 
 @end

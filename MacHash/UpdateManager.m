@@ -133,9 +133,7 @@ static const NSInteger UPDATE_LEVEL_DEBUG = -1;
 {
     NSMutableURLRequest *theRequest=[NSMutableURLRequest
                                      requestWithURL:[NSURL URLWithString:
-                                                     ////@"http://machash.weiketing.com/update.do"
-                                                     @"http://127.0.0.1:8088/www/test.json"
-                                                     ///@"http://ua.weiketing.com/"
+                                                     @"http://machash.weiketing.com/check4update.do"
                                                      ]
                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
                                     timeoutInterval:60.0];
@@ -165,6 +163,7 @@ static const NSInteger UPDATE_LEVEL_DEBUG = -1;
     [theRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:Nil]];
 
     [theRequest setValue:userAgent forHTTPHeaderField:@"User-Agent"];
+    [theRequest setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     receivedData = [NSMutableData dataWithCapacity:0];
     self =[super initWithRequest:theRequest delegate:self];
     if(!self){
@@ -214,10 +213,10 @@ static const NSInteger UPDATE_LEVEL_DEBUG = -1;
     receivedData = nil;
 }
 
-+(void)setLastChecked
++(void)setLastUpdateChecked
 {
     NSString *toDay = [[NSDate date] descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:Nil locale:Nil];
-    [[NSUserDefaults standardUserDefaults] setObject:toDay forKey:@"lastChecked"];
+    [[NSUserDefaults standardUserDefaults] setObject:toDay forKey:@"lastUpateChecked"];
 }
 
 +(void)setSkipVersionCode:(NSInteger)versionCode
@@ -235,7 +234,7 @@ static const NSInteger UPDATE_LEVEL_DEBUG = -1;
 +(BOOL)shouldCheckForUpdate
 {
     NSString *toDay = [[NSDate date] descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:Nil locale:Nil];
-    NSString *oldDay = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastChecked"];
+    NSString *oldDay = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastUpateChecked"];
     if([toDay isEqualToString:oldDay]){
         return NO;
     }
@@ -261,6 +260,9 @@ static const NSInteger UPDATE_LEVEL_DEBUG = -1;
             NSString *otherButton = Nil;
             NSBundle *bundle = [NSBundle mainBundle];
             
+#if defined (DEBUG) && DEBUG
+            NSLog(@"info:%@",info);
+#endif
 
             if([info updateLevel] < 0)return;
             
@@ -320,7 +322,7 @@ static const NSInteger UPDATE_LEVEL_DEBUG = -1;
                              runAlertSheetModal:alert
                              sheetWindow:window?window:[NSApp mainWindow]];
             
-            [UpdateManager setLastChecked];
+            [UpdateManager setLastUpdateChecked];
 
             if (NSAlertFirstButtonReturn == ret)
             {

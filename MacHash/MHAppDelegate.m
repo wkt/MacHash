@@ -280,9 +280,9 @@
             date = [NSDate dateWithTimeIntervalSince1970:st.st_mtimespec.tv_sec];
             [mdString appendFormat:@"<span style=\"font-size:120%%\">%@</span> : %@ <br/>",
                     NSLocalizedString(@"Modified",Nil),
-                    [date descriptionWithLocale:
-                        [[NSUserDefaults standardUserDefaults]
-                         dictionaryRepresentation]]];
+                    [date descriptionWithCalendarFormat:@"%Y-%m-%d %H:%M:%S %z"
+                                               timeZone:Nil
+                                                 locale:Nil]];
 
             if(S_ISDIR(st.st_mode))[mdString appendString:@"<br/></body></html>"];
 

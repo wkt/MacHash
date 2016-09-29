@@ -146,6 +146,7 @@
 
 - (IBAction)clearLog:(id)sender {
     [self.logTextView setString:@""];
+    [self.window setTitle:_orginalTitle];
 }
 
 - (IBAction)saveLog:(id)sender
@@ -227,7 +228,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         if(delay){
-            usleep(1000);
+            usleep(1000000);
         }
         
         NSData *data = Nil;
@@ -362,7 +363,7 @@
              });
 
             ///刚刚算完休息一下
-            usleep(500);
+            usleep(500000);
          }
         dispatch_async(dispatch_get_main_queue(), ^{
             [dockProgressBar setIndicateNunber:0];

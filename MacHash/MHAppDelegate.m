@@ -22,6 +22,7 @@
 
 @synthesize isDoingHash;
 
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     self.isDoingHash = NO;
@@ -231,7 +232,6 @@
             usleep(1000000);
         }
         
-        NSData *data = Nil;
         CC_MD5_CTX md5={};
         CC_MD5_CTX *md5p = NULL;
         if(needMD5)md5p = &md5;

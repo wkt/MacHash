@@ -98,11 +98,10 @@ static const size_t TB = GB   * 1024L;
     NSProcessInfo *pi = [NSProcessInfo processInfo];
     NSString *osVersion = [pi operatingSystemVersionString];
     
-    NSMutableString *cmd = [NSMutableString stringWithFormat:@"cd '%@/en.lproj/';",resourcePath];
+    NSMutableString *cmd = [NSMutableString stringWithFormat:@"cd '%@/';",resourcePath];
     if(strnstr([osVersion UTF8String],"10.7",[osVersion lengthOfBytesUsingEncoding:NSUTF8StringEncoding])){
-        [cmd appendString:@"/bin/ln -sf ../Base.lproj/*.nib ."];
-    }else{
-        [cmd appendString:@"/bin/rm *.nib"];
+        //[cmd appendString:@"/bin/ln -sf ../Base.lproj/*.nib ."];
+        [cmd appendString:@"for pj in *.lproj ; do test \"Base.lproj\" = \"$pj\" && continue; test \"base.lproj\" = \"$pj\" && continue; (cd $pj; /bin/ln -sf ../Base.lproj/*.nib . ); done"];
     }
     system([cmd UTF8String]);
 }
